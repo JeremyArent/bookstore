@@ -20,6 +20,7 @@ Formulaire : Confirmation des informations
 -->
 
 <?php
+if(Auth::isLog()){
     if(isset($_GET['stepA'])){
 ?>
         <h3>Confirmation de votre achat</h3>    
@@ -135,7 +136,8 @@ Formulaire : Confirmation des informations
 
             </table>
             <a href="confirmation_achat.php?stepC"><input type='submit' value="Oui je confirme ces achats"></input></a>
-            <a href="panier.php"><input type="submit" value="Modifier mon panier"></input></a>    
+            <a href="panier.php"><input type="submit" value="Modifier mon panier"></input></a>  
+            <h3>Attention, cette étape validera définitivement la commande !</h3>
         </div>
 <?php
         }else{
@@ -220,6 +222,9 @@ Formulaire : Confirmation des informations
             }
         }
     }
+}else{
+    echo "Veuillez vous connecter ou créer un compte";
+}
 ?>        
      <div class="clear"></div>
 </div><!--end of left content-->

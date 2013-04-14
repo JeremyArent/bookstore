@@ -4,6 +4,21 @@ include('includes/header.php');
 include('connexion/connexDB.php');
 
 include('includes/menu.php');
+
+if(isset($_POST['valider'])){
+    $nom = htmlspecialchars($_POST['nom']);
+    $courriel = $_POST['courriel'];
+    $sujet = htmlspecialchars($_POST['sujet']);
+    $message = htmlspecialchars($_POST['message']);
+    if($nom&&$courriel&&$message){
+        $req = "INSERT INTO contact VALUES ('', '$nom', '$courriel', '$sujet', '$message')";
+        $sql = mysql_query($req);
+        $ok = "Message envoyé avec succès";
+    }else{
+        $error_envoi = "Veuillez remplir tous les champs";
+    }
+}
+
 ?>
 
 <div class="center_content">
@@ -11,14 +26,11 @@ include('includes/menu.php');
         <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>Nous contacter</div>
         
         <?php
-        include 'contactForm.php';
-        $contact = new ContactFormulaire();
-        if(isset($_POST['nom'])){
-            print_r($contact->loadForm($_POST));
-        }
+        if(isset($error_envoi)){ echo $error_envoi;}
+        if(isset($ok)){echo $ok;}
         ?>
         
-        <form method="post">
+        <form method="post" action="contact.php">
         <div class="feat_prod_box_details">
             <p class="details">
                 Pour nous contacter, remplissez le formulaire suivant :
@@ -28,27 +40,27 @@ include('includes/menu.php');
                 <div class="form_subtitle">Tous les champs sont requis</div>          
                 <div class="form_row">
                     <label class="contact"><strong>Nom:</strong></label>
-                    <input type="text" class="contact_input" name="nom" value="<?php echo $contact->nom; ?>" />
+                    <input type="text" class="contact_input" name="nom" value="" />
                 </div>  
 
                 <div class="form_row">
                     <label class="contact"><strong>Email:</strong></label>
-                    <input type="text" name="mail" class="contact_input" value="<?php echo $contact->mail; ?>"/>
+                    <input type="text" name="courriel" class="contact_input" value=""/>
                 </div>
                 
                 <div class="form_row">
                     <label class="contact"><strong>Sujet:</strong></label>
-                    <input type="text" name="sujet" class="contact_input" value="<?php echo $contact->sujet; ?>" > 
+                    <input type="text" name="sujet" class="contact_input" value="" > 
                 </div>
 
                 <div class="form_row">
                     <label class="contact"><strong>Message:</strong></label>
-                    <textarea name="message" class="contact_textarea" ><?php echo $contact->message; ?></textarea>
+                    <textarea name="message" class="contact_textarea" ></textarea>
                 </div>
 
 
                 <div class="form_row">
-                    <input type="submit"  name="envoyer" value="Envoyer">                  
+                    <input type="submit"  name="valider" value="Envoyer">                  
                 </div>      
             </div>  
 

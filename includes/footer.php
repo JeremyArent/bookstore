@@ -8,6 +8,7 @@
             <a href="index.php">Accueil</a>
             <a href="a_propos.php">A propos</a>
             <a href="mentions_legales.php">Mentions Légales</a>
+            <a href="CGV.php">Conditions Générales de Vente</a>
             <a href="contact.php">Nous contacter</a>
             <a href="admin">Administration</a>
             </div>

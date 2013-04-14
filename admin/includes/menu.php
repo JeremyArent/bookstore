@@ -38,7 +38,7 @@ require_once('class/auth.class.php');
                     <a href="gestion_acces.php">Gestion des Accès</a>
                 </li>
                 <li>
-                    <a href="statistiques.php">Statistiques</a>
+                    <a href="https://www.google.com/analytics/web/?hl=fr&pli=1#report/visitors-overview/a40086097w69185294p71278022/" target="_blank">Statistiques</a>
                 </li>
             </ul>
         </div> 
